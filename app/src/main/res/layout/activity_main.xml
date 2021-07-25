@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/black_shade_1">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible"/>
+
+        <RelativeLayout
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/background_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@color/black_shade_1"
+                android:contentDescription="@string/search" />
+
+            <TextView
+                android:id="@+id/city_name"
+                android:text="@string/city_name"
+                style="@style/city_name_text_view_style" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                style="@style/linear_layout_style">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/city_text_input_layout"
+                    android:text="@string/enter_city_name"
+                    app:hintTextColor="@color/white"
+                    style="@style/city_text_input_layout_style">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/city_text_input_edit_text"
+                        style="@style/city_text_input_edit_text_style" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/search_image_view"
+                    android:src="@drawable/search"
+                    app:tint="@color/white"
+                    style="@style/search_image_view_style"
+                    android:contentDescription="@string/search" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/temperature_text_view"
+                android:text="@string/_23"
+                style="@style/temperature_text_view_style" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:src="@mipmap/ic_launcher"
+                style="@style/icon_style"
+                android:contentDescription="@string/icon"/>
+
+            <TextView
+                android:id="@+id/condition_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="@string/condition"
+                android:textColor="@color/white"
+                android:layout_below="@id/icon" />
+
+            <TextView
+                android:id="@+id/d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="@string/today_s_weather_forecast"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_above="@id/weather"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
