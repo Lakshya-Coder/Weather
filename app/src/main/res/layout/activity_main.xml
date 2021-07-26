@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,34 +16,47 @@
             android:layout_centerInParent="true"
             android:visibility="visible"/>
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/background_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/search"
                 android:scaleType="centerCrop"
                 android:src="@color/black_shade_1"
-                android:contentDescription="@string/search" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/city_name"
+                style="@style/city_name_text_view_style"
+                android:layout_marginTop="24dp"
                 android:text="@string/city_name"
-                style="@style/city_name_text_view_style" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/background_image_view" />
 
             <LinearLayout
                 android:id="@+id/linear_layout"
-                style="@style/linear_layout_style">
+                style="@style/linear_layout_style"
+                app:layout_constraintBottom_toTopOf="@+id/temperature_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/city_name"
+                app:layout_constraintVertical_bias="0.072">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/city_text_input_layout"
+                    style="@style/city_text_input_layout_style"
                     android:text="@string/enter_city_name"
-                    app:hintTextColor="@color/white"
-                    style="@style/city_text_input_layout_style">
+                    app:hintTextColor="@color/white">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/city_text_input_edit_text"
@@ -56,54 +65,72 @@
 
                 <ImageView
                     android:id="@+id/search_image_view"
-                    android:src="@drawable/search"
-                    app:tint="@color/white"
                     style="@style/search_image_view_style"
-                    android:contentDescription="@string/search" />
+                    android:contentDescription="@string/search"
+                    android:src="@drawable/search"
+                    app:tint="@color/white" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/temperature_text_view"
+                style="@style/temperature_text_view_style"
                 android:text="@string/_23"
-                style="@style/temperature_text_view_style" />
+                app:layout_constraintBottom_toBottomOf="@+id/background_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.842"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/city_name"
+                app:layout_constraintVertical_bias="0.196" />
 
             <ImageView
                 android:id="@+id/icon"
-                android:src="@mipmap/ic_launcher"
                 style="@style/icon_style"
-                android:contentDescription="@string/icon"/>
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/icon"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/temperature_text_view" />
 
             <TextView
                 android:id="@+id/condition_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/icon"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="@string/condition"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:layout_below="@id/icon" />
+                app:layout_constraintBottom_toTopOf="@+id/d"
+                app:layout_constraintTop_toBottomOf="@+id/icon"
+                app:layout_constraintVertical_bias="0.136"
+                tools:layout_editor_absoluteX="19dp" />
 
             <TextView
                 android:id="@+id/d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_above="@id/weather"
                 android:layout_margin="8dp"
-                android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="@string/today_s_weather_forecast"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_above="@id/weather"/>
+                app:layout_constraintBottom_toTopOf="@+id/weather"
+                tools:layout_editor_absoluteX="8dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-        </RelativeLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </layout>
